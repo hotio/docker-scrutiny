@@ -1,14 +1,29 @@
-FROM hotio/mono@sha256:15167d28b2ec8959eb859fd0ffc09368aacccf03250f41eb780d8d951e91d661
-
-ARG DEBIAN_FRONTEND="noninteractive"
-
-EXPOSE 7878
+FROM golang:alpine as builder
 
 ARG VERSION
 
-# install app
-RUN curl -fsSL "https://radarr.servarr.com/v1/update/develop/updatefile?version=${VERSION}&os=linux&runtime=mono" | tar xzf - -C "${APP_DIR}" --strip-components=1 && \
-    rm -rf "${APP_DIR}/NzbDrone.Update" && \
-    chmod -R u=rwX,go=rX "${APP_DIR}"
+RUN git clone -n https://github.com/AnalogJ/scrutiny.git /scrutiny && cd /scrutiny && \
+    git checkout ${VERSION} -b hotio && \
+    go mod vendor && \
+    go build -ldflags '-w -extldflags "-static"' -o scrutiny webapp/backend/cmd/scrutiny/scrutiny.go && \
+    go build -ldflags '-w -extldflags "-static"' -o scrutiny-collector-selftest collector/cmd/collector-selftest/collector-selftest.go && \
+    go build -ldflags '-w -extldflags "-static"' -o scrutiny-collector-metrics collector/cmd/collector-metrics/collector-metrics.go && \
+    chmod 755 "/scrutiny/scrutiny" && \
+    chmod 755 "/scrutiny/scrutiny-collector-selftest" && \
+    chmod 755 "/scrutiny/scrutiny-collector-metrics" && \
+    cd /scrutiny/webapp/frontend && \
+    mkdir /scrutiny-web && \
+    npm install && \
+    npx ng build --output-path=/scrutiny-web --deploy-url="/web/" --base-href="/web/" --prod
 
+FROM hotio/base@sha256:919a5fd851bcbefbe652b8ced0a4fdf8173ba8a58039e1fac0d4256225454086
+EXPOSE 8080
+ENV SCRUTINY_INTERVAL=86400 SCRUTINY_API_ENDPOINT="http://localhost:8080" SCRUTINY_MODE="BOTH"
+RUN apk add --no-cache smartmontools && \
+    mkdir -p /scrutiny/config && \
+    ln -s "${CONFIG_DIR}/app/scrutiny.yaml" /scrutiny/config/scrutiny.yaml
+COPY --from=builder /scrutiny/scrutiny ${APP_DIR}/
+COPY --from=builder /scrutiny/scrutiny-collector-selftest ${APP_DIR}/
+COPY --from=builder /scrutiny/scrutiny-collector-metrics ${APP_DIR}/
+COPY --from=builder /scrutiny-web ${APP_DIR}/
 COPY root/ /

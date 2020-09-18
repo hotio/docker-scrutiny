@@ -13,6 +13,9 @@ UMASK=${UMASK}
 TZ=${TZ}
 ARGS=${ARGS}
 DEBUG=${DEBUG}
+SCRUTINY_INTERVAL=${SCRUTINY_INTERVAL}
+SCRUTINY_API_ENDPOINT=${SCRUTINY_API_ENDPOINT}
+SCRUTINY_MODE=${SCRUTINY_MODE}
 ----------------------------------------------------------------------
 "
 
