@@ -14,7 +14,11 @@
 Just the basics to get the container running:
 
 ```shell
-docker run --rm --name scrutiny -p 8080:8080 -v /<host_folder_config>:/config hotio/scrutiny
+docker run --rm --name scrutiny -p 8080:8080 \
+    -v /run/udev:/run/udev:ro \
+    -v /dev/disk:/dev/disk:ro \
+    -v /<host_folder_config>:/config
+    hotio/scrutiny
 ```
 
 The environment variables below are all optional, the values you see are the defaults.
