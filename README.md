@@ -15,6 +15,7 @@ Just the basics to get the container running:
 
 ```shell
 docker run --rm --name scrutiny -p 8080:8080 \
+    --privileged \
     -v /run/udev:/run/udev:ro \
     -v /dev/disk:/dev/disk:ro \
     -v /<host_folder_config>:/config
@@ -30,12 +31,12 @@ The environment variables below are all optional, the values you see are the def
 -e TZ="Etc/UTC"
 -e ARGS=""
 -e DEBUG="no"
--e SCRUTINY_INTERVAL=86400
--e SCRUTINY_API_ENDPOINT="http://localhost:8080"
--e SCRUTINY_MODE="BOTH"
+-e INTERVAL=86400
+-e API_ENDPOINT="http://localhost:8080"
+-e MODE="BOTH"
 ```
 
-For the environment variable `SCRUTINY_MODE` you can pick the values `BOTH`, `WEB` or `COLLECTOR` to enable the desired operating mode.
+For the environment variable `MODE` you can pick the values `BOTH`, `WEB` or `COLLECTOR` to enable the desired operating mode.
 
 ## Tags
 
