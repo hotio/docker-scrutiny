@@ -19,7 +19,7 @@ RUN apk add --no-cache git gcc musl-dev nodejs npm && \
 
 FROM hotio/base@sha256:7bfee9c33fd5ee64bb7b8842dba5031eb246d2d0cad19fd087524468e3c57532
 EXPOSE 8080
-ENV INTERVAL=86400 API_ENDPOINT="http://localhost:8080" MODE="BOTH"
+ENV INTERVAL=86400 API_ENDPOINT="http://localhost:8080" MODE="both"
 RUN apk add --no-cache smartmontools && \
     mkdir -p /scrutiny/config && \
     ln -s "${CONFIG_DIR}/app/scrutiny.yaml" /scrutiny/config/scrutiny.yaml

@@ -13,8 +13,5 @@ redirect_cmd() {
 
 s6-svwait ../web && sleep 1
 
-while true; do
-    # shellcheck disable=SC2086
-    redirect_cmd exec s6-setuidgid hotio "${APP_DIR}/scrutiny-collector-metrics" run --api-endpoint "${API_ENDPOINT}" ${ARGS}
-    sleep "${INTERVAL}"
-done
+# shellcheck disable=SC2086
+redirect_cmd exec s6-setuidgid hotio bash "${APP_DIR}/collector.sh" "${INTERVAL}" "${API_ENDPOINT}" ${ARGS}

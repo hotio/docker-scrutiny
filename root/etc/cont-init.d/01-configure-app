@@ -9,10 +9,10 @@ if [[ ! -f "${CONFIG_DIR}/app/scrutiny.yaml" ]]; then
     chown hotio:hotio "${CONFIG_DIR}/app/scrutiny.yaml"
 fi
 
-if [[ "${MODE}" == WEB ]]; then
+if [[ "${MODE}" == web ]]; then
     rm -rf /etc/services.d/collector
 fi
 
-if [[ "${MODE}" == COLLECTOR ]]; then
+if [[ "${MODE}" == collector ]]; then
     rm -rf /etc/services.d/web
 fi
