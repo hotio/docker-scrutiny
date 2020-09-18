@@ -33,10 +33,10 @@ The environment variables below are all optional, the values you see are the def
 -e DEBUG="no"
 -e INTERVAL=86400
 -e API_ENDPOINT="http://localhost:8080"
--e MODE="BOTH"
+-e MODE="both"
 ```
 
-For the environment variable `MODE` you can pick the values `BOTH`, `WEB` or `COLLECTOR` to enable the desired operating mode.
+For the environment variable `MODE` you can pick the values `both`, `web` or `collector` to enable the desired operating mode.
 
 ## Tags
 
