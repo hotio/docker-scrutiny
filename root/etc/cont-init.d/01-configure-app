@@ -7,10 +7,10 @@ if [[ ! -f "${CONFIG_DIR}/app/scrutiny.yaml" ]]; then
     cp "${APP_DIR}/scrutiny.yaml" "${CONFIG_DIR}/app/scrutiny.yaml"
 fi
 
-if [[ "${SCRUTINY_MODE}" == WEB ]]; then
+if [[ "${MODE}" == WEB ]]; then
     rm -rf /etc/services.d/collector
 fi
 
-if [[ "${SCRUTINY_MODE}" == COLLECTOR ]]; then
+if [[ "${MODE}" == COLLECTOR ]]; then
     rm -rf /etc/services.d/web
 fi

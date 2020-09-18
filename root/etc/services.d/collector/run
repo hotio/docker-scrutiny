@@ -15,6 +15,6 @@ s6-svwait ../web && sleep 1
 
 while true; do
     # shellcheck disable=SC2086
-    redirect_cmd exec s6-setuidgid hotio "${APP_DIR}/scrutiny-collector-metrics" run --api-endpoint "${SCRUTINY_API_ENDPOINT}" ${ARGS}
-    sleep "${SCRUTINY_INTERVAL}"
+    redirect_cmd exec s6-setuidgid hotio "${APP_DIR}/scrutiny-collector-metrics" run --api-endpoint "${API_ENDPOINT}" ${ARGS}
+    sleep "${INTERVAL}"
 done
