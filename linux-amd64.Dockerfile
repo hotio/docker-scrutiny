@@ -2,7 +2,8 @@ FROM golang:alpine as builder
 
 ARG VERSION
 
-RUN git clone -n https://github.com/AnalogJ/scrutiny.git /scrutiny && cd /scrutiny && \
+RUN apk add --no-cache git && \
+    git clone -n https://github.com/AnalogJ/scrutiny.git /scrutiny && cd /scrutiny && \
     git checkout ${VERSION} -b hotio && \
     go mod vendor && \
     go build -ldflags '-w -extldflags "-static"' -o scrutiny webapp/backend/cmd/scrutiny/scrutiny.go && \
