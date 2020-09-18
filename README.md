@@ -44,6 +44,7 @@ For the environment variable `MODE` you can pick the values `both`, `web` or `co
 | ----------|--------------------------------------------|
 | latest    | The same as `stable`                       |
 | stable    | Stable version                             |
+| unstable  | Every commit to master branch              |
 
 You can also find tags that reference a commit or version number.
 
