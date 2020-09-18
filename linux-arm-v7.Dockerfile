@@ -26,5 +26,5 @@ RUN apk add --no-cache smartmontools && \
 COPY --from=builder /scrutiny/scrutiny ${APP_DIR}/
 COPY --from=builder /scrutiny/scrutiny-collector-selftest ${APP_DIR}/
 COPY --from=builder /scrutiny/scrutiny-collector-metrics ${APP_DIR}/
-COPY --from=builder /scrutiny-web ${APP_DIR}/
+COPY --from=builder /scrutiny-web ${APP_DIR}/scrutiny-web/
 COPY root/ /
