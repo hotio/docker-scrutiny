@@ -4,7 +4,9 @@
 umask "${UMASK}"
 
 if [[ ! -f "${CONFIG_DIR}/app/scrutiny.yaml" ]]; then
+    echo "Installing default \"scrutiny.yaml\"..."
     cp "${APP_DIR}/scrutiny.yaml" "${CONFIG_DIR}/app/scrutiny.yaml"
+    chown hotio:hotio "${CONFIG_DIR}/app/scrutiny.yaml"
 fi
 
 if [[ "${MODE}" == WEB ]]; then
