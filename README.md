@@ -36,7 +36,31 @@ The environment variables below are all optional, the values you see are the def
 -e MODE="both"
 ```
 
-For the environment variable `MODE` you can pick the values `both`, `web` or `collector` to enable the desired operating mode.
+For the environment variable `MODE` you can pick the values `both`, `web` or `collector` to enable the desired operating mode (see below).
+
+## Deploying as 2 seperate containers
+
+```shell
+docker run --rm --name scrutiny-collector \
+    --privileged \
+    --network my-net \
+    -v /run/udev:/run/udev:ro \
+    -v /dev/disk:/dev/disk:ro \
+    -v /<host_folder_config>:/config \
+    -e INTERVAL=3600 \
+    -e API_ENDPOINT="http://scrutiny-web:8080" \
+    -e MODE="collector" \
+    hotio/scrutiny
+```
+
+```shell
+docker run --rm --name scrutiny-web \
+    --network my-net \
+    -p 8080:8080 \
+    -v /<host_folder_config>:/config \
+    -e MODE="web" \
+    hotio/scrutiny
+```
 
 ## Tags
 
