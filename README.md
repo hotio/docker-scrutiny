@@ -36,7 +36,7 @@ The environment variables below are all optional, the values you see are the def
 -e MODE="both"
 ```
 
-For the environment variable `MODE` you can pick the values `both`, `web` or `collector` to enable the desired operating mode (see below).
+For the environment variable `MODE` you can pick the values `both`, `web` or `collector` to enable the desired operating mode (see below). The `INTERVAL` variable defines the amount of time in seconds between collector runs, the metrics are pushed to the webinterface located at `API_ENDPOINT`.
 
 ## Deploying as 2 seperate containers
 
