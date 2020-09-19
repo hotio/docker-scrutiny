@@ -11,7 +11,5 @@ redirect_cmd() {
     fi
 }
 
-s6-svwait ../web && sleep 1
-
 # shellcheck disable=SC2086
 redirect_cmd exec bash "${APP_DIR}/collector.sh" "${INTERVAL}" "${API_ENDPOINT}" ${ARGS}
