@@ -12,4 +12,4 @@ redirect_cmd() {
 }
 
 # shellcheck disable=SC2086
-redirect_cmd exec DEBUG="" bash "${APP_DIR}/collector.sh" "${INTERVAL}" "${API_ENDPOINT}" ${ARGS}
+DEBUG="" redirect_cmd exec bash "${APP_DIR}/collector.sh" "${INTERVAL}" "${API_ENDPOINT}" ${ARGS}

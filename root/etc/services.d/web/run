@@ -12,4 +12,4 @@ redirect_cmd() {
 }
 
 # shellcheck disable=SC2086
-redirect_cmd exec s6-setuidgid hotio DEBUG="" "${APP_DIR}/scrutiny" start ${ARGS}
+DEBUG="" redirect_cmd exec s6-setuidgid hotio "${APP_DIR}/scrutiny" start ${ARGS}
