@@ -5,7 +5,7 @@ umask "${UMASK}"
 
 redirect_cmd() {
     if [[ "${DEBUG}" == "yes" ]]; then
-        DEBUG="" "$@" --debug 2>&1 | s6-setuidgid hotio tee -a "${CONFIG_DIR}/app/scrutiny-web.log"
+        DEBUG="" "$@" 2>&1 | s6-setuidgid hotio tee -a "${CONFIG_DIR}/app/scrutiny-web.log"
     else
         DEBUG="" "$@" >> "${CONFIG_DIR}/app/scrutiny-web.log" 2>&1
     fi
