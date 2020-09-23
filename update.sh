@@ -28,7 +28,7 @@ elif [[ ${1} == "screenshot" ]]; then
     docker run --rm --network host --entrypoint="" -u "$(id -u "$USER")" -v "${GITHUB_WORKSPACE}":/usr/src/app/src zenika/alpine-chrome:with-puppeteer node src/puppeteer.js
     exit 0
 else
-    version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/AnalogJ/scrutiny/tags" | jq -r .[].name)
+    version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/AnalogJ/scrutiny/tags" | jq -r .[0].name)
     [[ -z ${version} ]] && exit 1
     echo "VERSION=${version}" > VERSION
     echo "##[set-output name=version;]${version}"
