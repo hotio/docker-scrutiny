@@ -17,6 +17,7 @@ Just the basics to get the container running:
 docker run --rm --name scrutiny -p 8080:8080 \
     --cap-add SYS_RAWIO \ # or [--cap-add SYS_ADMIN] for NVMe drives
     --device /dev/sda \
+    -v /run/udev:/run/udev:ro \
     -v /<host_folder_config>:/config
     hotio/scrutiny
 ```
@@ -44,6 +45,7 @@ docker run --rm --name scrutiny-collector \
     --network my-net \
     --cap-add SYS_RAWIO \ # or [--cap-add SYS_ADMIN] for NVMe drives
     --device /dev/sda \
+    -v /run/udev:/run/udev:ro \
     -v /<host_folder_config>:/config \
     -e INTERVAL=3600 \
     -e API_ENDPOINT="http://scrutiny-web:8080" \
