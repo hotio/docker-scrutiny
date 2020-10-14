@@ -3,10 +3,16 @@
 
 umask "${UMASK}"
 
-if [[ ! -f "${CONFIG_DIR}/app/scrutiny.yaml" ]]; then
+if [[ ! -f "${CONFIG_DIR}/app/scrutiny.yaml" && ( "${MODE}" == web || "${MODE}" == both ) ]]; then
     echo "Installing default \"scrutiny.yaml\"..."
     cp "${APP_DIR}/scrutiny.yaml" "${CONFIG_DIR}/app/scrutiny.yaml"
     chown hotio:hotio "${CONFIG_DIR}/app/scrutiny.yaml"
+fi
+
+if [[ ! -f "${CONFIG_DIR}/app/collector.yaml" && ( "${MODE}" == collector || "${MODE}" == both ) ]]; then
+    echo "Installing default \"collector.yaml\"..."
+    cp "${APP_DIR}/collector.yaml" "${CONFIG_DIR}/app/collector.yaml"
+    chown hotio:hotio "${CONFIG_DIR}/app/collector.yaml"
 fi
 
 if [[ "${MODE}" == web ]]; then
