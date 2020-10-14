@@ -1,7 +1,7 @@
 FROM golang:alpine as builder
 
 ARG VERSION
-
+ENV CGO_ENABLED=1
 RUN apk add --no-cache git gcc musl-dev nodejs npm && \
     git clone -n https://github.com/AnalogJ/scrutiny.git /scrutiny && cd /scrutiny && \
     git checkout ${VERSION} -b hotio && \
