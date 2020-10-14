@@ -22,7 +22,7 @@ EXPOSE 8080
 ENV INTERVAL=86400 API_ENDPOINT="http://localhost:8080" MODE="both"
 RUN apk add --no-cache smartmontools && \
     mkdir -p /scrutiny/config && \
-    ln -s "${CONFIG_DIR}/app/scrutiny.yaml" /scrutiny/config/scrutiny.yaml \
+    ln -s "${CONFIG_DIR}/app/scrutiny.yaml" /scrutiny/config/scrutiny.yaml && \
     ln -s "${CONFIG_DIR}/app/collector.yaml" /scrutiny/config/collector.yaml
 COPY --from=builder /scrutiny/scrutiny ${APP_DIR}/
 COPY --from=builder /scrutiny/scrutiny-collector-selftest ${APP_DIR}/
