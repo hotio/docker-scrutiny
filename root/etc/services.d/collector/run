@@ -3,13 +3,5 @@
 
 umask "${UMASK}"
 
-redirect_cmd() {
-    if [[ "${DEBUG}" == "yes" ]]; then
-        DEBUG="" COLLECTOR_DEBUG="true" "$@" 2>&1 | s6-setuidgid hotio tee -a "${CONFIG_DIR}/app/scrutiny-collector.log"
-    else
-        DEBUG="" "$@" >> "${CONFIG_DIR}/app/scrutiny-collector.log" 2>&1
-    fi
-}
-
 # shellcheck disable=SC2086
-redirect_cmd exec bash "${APP_DIR}/collector.sh" "${INTERVAL}" "${API_ENDPOINT}" ${ARGS}
+exec bash "${APP_DIR}/collector.sh" "${INTERVAL}" "${API_ENDPOINT}" ${ARGS}
