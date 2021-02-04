@@ -3,13 +3,5 @@
 
 umask "${UMASK}"
 
-redirect_cmd() {
-    if [[ "${DEBUG}" == "yes" ]]; then
-        DEBUG="" SCRUTINY_DEBUG="true" "$@" 2>&1 | s6-setuidgid hotio tee -a "${CONFIG_DIR}/app/scrutiny-web.log"
-    else
-        DEBUG="" "$@" >> "${CONFIG_DIR}/app/scrutiny-web.log" 2>&1
-    fi
-}
-
 # shellcheck disable=SC2086
-redirect_cmd exec s6-setuidgid hotio "${APP_DIR}/scrutiny" start ${ARGS}
+exec s6-setuidgid hotio "${APP_DIR}/scrutiny" start ${ARGS}
