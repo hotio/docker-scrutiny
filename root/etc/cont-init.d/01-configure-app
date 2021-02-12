@@ -3,16 +3,16 @@
 
 umask "${UMASK}"
 
-if [[ ! -f "${CONFIG_DIR}/app/scrutiny.yaml" && ( "${MODE}" == web || "${MODE}" == both ) ]]; then
+if [[ ! -f "${CONFIG_DIR}/scrutiny.yaml" && ( "${MODE}" == web || "${MODE}" == both ) ]]; then
     echo "Installing default \"scrutiny.yaml\"..."
-    cp "${APP_DIR}/scrutiny.yaml" "${CONFIG_DIR}/app/scrutiny.yaml"
-    chown hotio:hotio "${CONFIG_DIR}/app/scrutiny.yaml"
+    cp "${APP_DIR}/scrutiny.yaml" "${CONFIG_DIR}/scrutiny.yaml"
+    chown hotio:hotio "${CONFIG_DIR}/scrutiny.yaml"
 fi
 
-if [[ ! -f "${CONFIG_DIR}/app/collector.yaml" && ( "${MODE}" == collector || "${MODE}" == both ) ]]; then
+if [[ ! -f "${CONFIG_DIR}/collector.yaml" && ( "${MODE}" == collector || "${MODE}" == both ) ]]; then
     echo "Installing default \"collector.yaml\"..."
-    cp "${APP_DIR}/collector.yaml" "${CONFIG_DIR}/app/collector.yaml"
-    chown hotio:hotio "${CONFIG_DIR}/app/collector.yaml"
+    cp "${APP_DIR}/collector.yaml" "${CONFIG_DIR}/collector.yaml"
+    chown hotio:hotio "${CONFIG_DIR}/collector.yaml"
 fi
 
 if [[ "${MODE}" == web ]]; then
