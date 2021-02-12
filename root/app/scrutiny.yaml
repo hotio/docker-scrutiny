@@ -22,7 +22,7 @@ web:
     host: 0.0.0.0
   database:
     # can also set absolute path here
-    location: /config/app/scrutiny.db
+    location: /config/scrutiny.db
   src:
     frontend:
       path: /app/scrutiny-web
