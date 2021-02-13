@@ -3,5 +3,4 @@
 
 umask "${UMASK}"
 
-# shellcheck disable=SC2086
-exec s6-setuidgid hotio "${APP_DIR}/scrutiny" start ${ARGS}
+exec s6-setuidgid hotio "${APP_DIR}/scrutiny" start

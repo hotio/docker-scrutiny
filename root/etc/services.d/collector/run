@@ -3,5 +3,4 @@
 
 umask "${UMASK}"
 
-# shellcheck disable=SC2086
-exec bash "${APP_DIR}/collector.sh" "${INTERVAL}" "${API_ENDPOINT}" ${ARGS}
+exec bash "${APP_DIR}/collector.sh" "${INTERVAL}" "${API_ENDPOINT}"
