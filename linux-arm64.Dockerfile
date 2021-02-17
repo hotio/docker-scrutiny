@@ -17,7 +17,7 @@ RUN apk add --no-cache git gcc musl-dev nodejs npm && \
     npm install && \
     npx ng build --output-path=/scrutiny-web --deploy-url="/web/" --base-href="/web/" --prod
 
-FROM hotio/base@sha256:8332ef574312f79be79393f6cda4cafcb9ab4e1a016944cb523d149b6f7f7ef3
+FROM hotio/base@sha256:5272063215bf9d2b7be7eb7defff597d002fee8df96586c1d41aee310649df8f
 EXPOSE 8080
 ENV INTERVAL=86400 API_ENDPOINT="http://localhost:8080" MODE="both"
 RUN apk add --no-cache smartmontools && \
