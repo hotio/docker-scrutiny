@@ -4,7 +4,7 @@
       "name": "release",
       "version": "0.3.5",
       "commit": "6932489",
-      "upstream": "",
+      "upstream": "Releases",
       "lastUpdated": "2021-02-23T13:09:06.843Z"
     },
     {
@@ -18,7 +18,7 @@
       "name": "nightly",
       "version": "27b923b5e966a7da6169fa6105fa44cd4835801f",
       "commit": "a452378",
-      "upstream": "",
+      "upstream": "Every commit to master",
       "lastUpdated": "2021-02-23T13:10:04.230Z"
     }
   ]
