@@ -17,9 +17,9 @@
     {
       "name": "nightly",
       "version": "fd4f0429e4d8171ea172f630df613d98b70ba8f8",
-      "commit": "5166f21",
+      "commit": "5aad573",
       "upstream": "Every commit to master",
-      "lastUpdated": "2021-06-16T01:56:04.027Z"
+      "lastUpdated": "2021-06-17T18:14:07.141Z"
     }
   ],
   "pulls": 541880,
